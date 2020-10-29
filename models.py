@@ -108,3 +108,33 @@ class FitnessCalculator:
     def get_population_fitness(self):
         return self.fitness
 
+class Roulette:
+    def __init__(self, fitness: list):
+        self.fitness = fitness
+        self.intervals: list = []
+        self.selected_index: list = []
+        self.min_value: int = 0
+        self.max_value: int = 0
+
+    def set_intervals(self):
+        begin: int = 0
+        for fitness_value in self.fitness:
+            interval = {
+                "begin": begin,
+                "end": begin + fitness_value
+            }
+            self.intervals.append(interval)
+            begin = interval["end"] + 1
+        self.min_value = self.intervals[0]["begin"]
+        self.max_value = self.intervals[len(self.intervals) - 1]["end"]
+
+    def select_index(self, how_many: int):
+        self.set_intervals()
+        while len(self.selected_index) < how_many:
+            number_selected = randint(self.min_value, self.max_value)
+            for index, interval in enumerate(self.intervals):
+                if(number_selected>interval["begin"] and number_selected<interval["end"] and not(self.selected_index.count(index))):
+                    self.selected_index.append(index)
+    
+    def get_selected_index(self):
+        return self.selected_index
