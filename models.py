@@ -135,6 +135,7 @@ class Roulette:
             for index, interval in enumerate(self.intervals):
                 if(number_selected>interval["begin"] and number_selected<interval["end"] and not(self.selected_index.count(index))):
                     self.selected_index.append(index)
+        self.selected_index.sort()
     
     def get_selected_index(self):
         return self.selected_index
