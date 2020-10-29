@@ -1,4 +1,4 @@
-import random as rand
+from random import randint
 
 class City:
     def __init__(self):
@@ -50,7 +50,7 @@ class Generator:
                 if (i == j):
                     cities[i].add_distance(0)
                 else:
-                    distance = int(rand.random() * max_distance) + 1
+                    distance = randint(0, max_distance) + 1
                     cities[i].add_distance(distance)
                     cities[j].add_distance(distance)
     
@@ -71,7 +71,7 @@ class PopulationGenerator:
         individual = []
         cities = list(self.cities)
         while(len(cities) > 0):
-            random_city_index = int(rand.random() * len(cities)) - 1
+            random_city_index = randint(0, len(cities) - 1)
             individual.append(cities.pop(random_city_index))
         return individual
     
