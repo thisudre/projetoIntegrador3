@@ -18,23 +18,23 @@ class City:
     def add_distance(self, distance):
         self.distance.append(distance)
     
-class Cities:
+class CityGroup:
     def __init__(self):
-        self.array_cidades = []
+        self.array_city = []
     
     def add_city(self, newCity):
-        self.array_cidades.append(newCity)
-        newCity.set_id(len(self.array_cidades) - 1)
+        self.array_city.append(newCity)
+        newCity.set_id(len(self.array_city) - 1)
 
     def remove_city(self, city):
-        self.array_cidades.append(city)
+        self.array_city.append(city)
     
     def get_cities(self):
-        return self.array_cidades
+        return self.array_city
 
 class Generator:
     def __init__(self, size):
-        self.cities = Cities()
+        self.cities = CityGroup()
         self.size = size
 
     def generate_cities(self):
