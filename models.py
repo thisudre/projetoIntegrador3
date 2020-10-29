@@ -96,10 +96,10 @@ class FitnessCalculator:
             self.distance_sum += actual_distance
         self.distances.sort()
 
-    # toDo: calcular a chance do individuo ser selecionado
+    # toDo: calcular a função fitness
     def calculate_fitness(self):
         for distance in self.distances:
-            fitness = round((self.distance_sum - distance) / self.distance_sum, 2)
+            fitness = self.distance_sum // distance
             self.fitness.append(fitness)
 
     def get_population_distances(self):
@@ -107,3 +107,4 @@ class FitnessCalculator:
 
     def get_population_fitness(self):
         return self.fitness
+

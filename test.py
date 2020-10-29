@@ -2,7 +2,7 @@ from models import Generator, PopulationGenerator, FitnessCalculator
 
 quant_cidades = 5
 distancia_maxima = 30
-tamanho_populacao = 4
+tamanho_populacao = 10
 
 gen = Generator(quant_cidades)
 gen.generate_cities()
@@ -27,5 +27,5 @@ print(population)
 print("Distancia percorrida por indivíduo: ")
 print(fit.get_population_distances())
 
-print("Porcentagem de escolha de cada indivíduo: ")
+print("Valor da função fitness de cada indivíduo: ")
 print(fit.get_population_fitness())
