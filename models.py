@@ -96,7 +96,6 @@ class FitnessCalculator:
             self.distance_sum += actual_distance
         self.distances.sort()
 
-    # toDo: calcular a função fitness
     def calculate_fitness(self):
         for distance in self.distances:
             fitness = self.distance_sum // distance
@@ -112,6 +111,7 @@ class Roulette:
     def __init__(self, fitness: list):
         self.fitness = fitness
         self.intervals: list = []
+        # da pra mudar pra "cidades selecionadas", inserindo a cidade referida no dicionário "interval"
         self.selected_index: list = []
         self.min_value: int = 0
         self.max_value: int = 0
