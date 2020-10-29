@@ -65,15 +65,15 @@ class PopulationGenerator:
 
     def generate_populations(self):
         for i in range(self.population_size):
-            self.population.append(self.generate_crom())
+            self.population.append(self.generate_individual())
 
-    def generate_crom(self):
-        crom = []
+    def generate_individual(self):
+        individual = []
         cities = list(self.cities)
         while(len(cities) > 0):
             random_city_index = int(rand.random() * len(cities)) - 1
-            crom.append(cities.pop(random_city_index))
-        return crom
+            individual.append(cities.pop(random_city_index))
+        return individual
     
     def get_population(self):
         return self.population
@@ -86,15 +86,17 @@ class FitnessCalculator:
         self.distance_sum = 0
     
     def calulate_total_distances(self):
-        for crom in self.population:
+        for individual in self.population:
             actual_distance = 0
-            for i in range(len(crom) - 1):
-                actual_city = crom[i]
-                next_city = crom[i+1]
+            for i in range(len(individual) - 1):
+                actual_city = individual[i]
+                next_city = individual[i+1]
                 actual_distance += actual_city.distance[next_city.id]
             self.distances.append(actual_distance)
             self.distance_sum += actual_distance
-    
+        self.distances.sort()
+
+    # toDo: calcular a chance do individuo ser selecionado
     def calculate_fitness(self):
         for distance in self.distances:
             fitness = round((self.distance_sum - distance) / self.distance_sum, 2)

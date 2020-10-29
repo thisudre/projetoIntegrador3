@@ -24,8 +24,8 @@ fit.calculate_fitness()
 print("População: ")
 print(population)
 
-print("Distancia percorrida por cromossomo: ")
+print("Distancia percorrida por indivíduo: ")
 print(fit.get_population_distances())
 
-print("Porcentagem de escolha de cada cromossomo:")
+print("Porcentagem de escolha de cada indivíduo: ")
 print(fit.get_population_fitness())
